@@ -1,0 +1,26 @@
+def f(n):
+    mus = [0] * 10
+    while n > 0:
+        ost = n % 10
+        mus[ost] += 1
+        n //= 10
+    if max(mus) >= 3:
+        return 1
+    else:
+        return 0
+
+a = [int(x) for x in open('17_2.txt')]
+
+maxo = 0
+for j in range(len(a)):
+    if f(a[j]) == 1:
+        maxo = max(maxo, a[j])
+
+k = 0
+maxim = 0
+for i in range(len(a) - 1):
+    if ((f(a[i]) or f(a[i + 1])) and ((a[i] + a[i + 1])**2 <= maxo**2)):
+        k += 1
+        maxim = max(maxim, a[i] + a[i + 1])
+
+print(k, maxim)
