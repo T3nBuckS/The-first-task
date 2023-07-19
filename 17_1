@@ -1,0 +1,14 @@
+def f(n):                                   
+    if 1000 <= n <= 9999:  
+        return 1
+    else:
+        return 0
+
+a = [int(x) for x in open('17_1.txt')]      
+
+k = 0                                       
+for i in range(len(a)):
+    if f(a[i]) and abs(a[i]) % 100 == 27:
+        k += 1
+
+print(k)     
